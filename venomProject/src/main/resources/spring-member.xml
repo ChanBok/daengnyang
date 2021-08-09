@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			">
+	<bean class="controller.member.MemberJoinController" />
+	<bean class="controller.member.MemberProfilePageController" />
+	<bean class="controller.member.MemberListController" />
+	<bean id="memberJoinService" class="service.member.MemberJoinService" />
+	<bean id="memberListService" class="service.member.MemberListService" />
+	<bean id="memberProfilePageService" class="service.member.MemberProfilePageService" />
+	<bean id="memeberRepository" class="repository.MemberRepository" />
+</beans>

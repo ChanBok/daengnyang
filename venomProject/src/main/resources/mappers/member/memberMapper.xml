@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.memberMapper">
+
+	<sql id="asterisk">
+		MEM_ID memId,MEM_PW memPw,MEM_NAME memName,
+		MEM_BIRTH memBirth,MEM_GENDER memGender,MEM_PHONE memPhone,
+		POST_NUM postNum,MEM_ADD memAdd,MEM_ADD_DETAIL addDetail,
+		MEM_IMAGE memImage,MEM_INTRO memIntro,MEM_PET_CK memPetCk,
+		PET_DN petDn,PET_KIND petKind,PET_NAME petName,
+		PET_AGE petAge,PET_GENDER petGender,PET_IMAGE petImage,
+		PET_INTRO petIntro,
+		substr(mem_add,1,instr(mem_add,' ')) memLocation
+	</sql>
+
+	<insert id="Join" parameterType="Model.MemberDTO">
+		insert into member
+		(
+		MEM_ID,MEM_PW,MEM_NAME,MEM_BIRTH,MEM_GENDER,MEM_PHONE,
+		POST_NUM,MEM_ADD,MEM_ADD_DETAIL,MEM_IMAGE,MEM_INTRO,MEM_PET_CK,
+		PET_DN,PET_KIND,PET_NAME,PET_AGE,PET_GENDER,PET_IMAGE,PET_INTRO
+		)
+		values
+		(
+		#{memId},#{memPw},
+		#{memName},#{memBirth},
+		#{memGender},#{memPhone},
+		#{postNum},#{memAdd},
+		#{addDetail},
+		<if test="memImage != null">#{memImage}</if><if test="memImage == null">null</if>,
+		<if test="memIntro != null">#{memIntro}</if><if test="memIntro == null">null</if>,
+		#{memPetCk},
+		<if test="petDn != null">#{petDn}</if><if test="petDn == null">null</if>,
+		<if test="petKind != null">#{petKind}</if><if test="petKind == null">null</if>,
+		<if test="petName != null">#{petName}</if><if test="petName == null">null</if>,
+		<if test="petAge != null">#{petAge}</if><if test="petAge == null">null</if>,
+		<if test="petGender != null">#{petGender}</if><if test="petGender == null">null</if>,
+		<if test="petImage != null">#{petImage}</if><if test="petImage == null">null</if>,
+		<if test="petIntro != null">#{petIntro}</if><if test="petIntro == null">null</if>
+		)
+	</insert>
+
+	<select id="List" resultType="command.MemberCommandDTO">
+		select
+		<include refid="asterisk" />
+		from member
+	</select>
+	
+	<select id="memberInformation" parameterType="string" resultType="Model.MemberDTO">
+		select
+		<include refid="asterisk" />
+		from member
+		where mem_id= #{userId}
+	</select>
+</mapper>
