@@ -19,10 +19,11 @@
 	font-family: 'Nanum Pen Script', cursive;
 	font-family: 'Sunflower', sans-serif;
 	text-decoration: none;
+	color: #34495e;
 }
 
 .my_page {
-	padding-top: 100px;
+	padding-top: 60px;
 	background-image: url("images/profile_bg.jpg");
 	background-size: 100% 100%;
 	width: 100%;
@@ -55,6 +56,13 @@
 #text_box {
 	padding: 15px;
 	text-align: center;
+}
+
+#image_box {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 td {
@@ -158,15 +166,7 @@ strong {
 		<div class="profile_box">
 			<table class="mem_profile_box">
 				<tr>
-					<td colspan="2"><strong id="text_profile">프로필</strong></td>
-				</tr>
-				<tr>
-					<td id="button_box">
-						<div class="button-3">
-							<div class="eff-3"></div>
-							<a href="#"> 프로필 수정 </a>
-						</div>
-					</td>
+					<td id="text_box" colspan="2"><strong id="text_profile">프로필</strong></td>
 				</tr>
 				<tr>
 					<td><c:if test="${memberDTO.memImage != null }">
@@ -182,8 +182,11 @@ strong {
 								value="${memberDTO.memBirth }" pattern="yy.MM.dd" /></strong></td>
 				</tr>
 				<tr>
-					<td>성별 : <c:if test="${memberDTO.memGender == 'M' }"><strong>남</strong></c:if>
-						<c:if test="${memberDTO.memGender == 'F' }"><strong>여</strong></c:if>
+					<td>성별 : <c:if test="${memberDTO.memGender == 'M' }">
+							<strong>남</strong>
+						</c:if> <c:if test="${memberDTO.memGender == 'F' }">
+							<strong>여</strong>
+						</c:if>
 					</td>
 				</tr>
 				<tr>
@@ -193,13 +196,23 @@ strong {
 					<td>휴대폰 : <strong>${memberDTO.memPhone }</strong></td>
 				</tr>
 				<tr>
-					<td>댕냥이 : <c:if test="${memberDTO.petDn == 'D' }"><strong>댕</strong></c:if> <c:if
-							test="${memberDTO.petDn == 'N' }"><strong>냥</strong></c:if> <c:if
-							test="${memberDTO.memPetCk == 'N' }">없음</c:if>
+					<td>댕냥이 : <c:if test="${memberDTO.petDn == 'D' }">
+							<strong>댕</strong>
+						</c:if> <c:if test="${memberDTO.petDn == 'N' }">
+							<strong>냥</strong>
+						</c:if> <c:if test="${memberDTO.memPetCk == 'N' }">없음</c:if>
 					</td>
 				</tr>
 				<tr>
 					<td><a id="intro" onclick="intro()" href="#"><strong>소개</strong></a></td>
+				</tr>
+				<tr>
+					<td id="button_box">
+						<div class="button-3">
+							<div class="eff-3"></div>
+							<a href="profileEditPage"> 프로필 수정 </a>
+						</div>
+					</td>
 				</tr>
 			</table>
 			<c:if test="${memberDTO.memPetCk == 'Y' }">
@@ -208,7 +221,8 @@ strong {
 						<td id="text_box" colspan="2"><strong id="text_profile">댕냥이</strong></td>
 					</tr>
 					<tr>
-						<td><c:if test="${memberDTO.petImage != null }">
+						<td id="image_box"><c:if
+								test="${memberDTO.petImage != null }">
 								<img width="200" height="200"
 									src="member/profile/${memberDTO.petImage.split(',')[0] }" />
 								<br />
@@ -217,16 +231,34 @@ strong {
 							</c:if></td>
 					</tr>
 					<tr>
+						<td id="image_box"><c:if
+								test="${memberDTO.petImage.split(',')[1] != null }">
+								<img width="100" height="100"
+									src="member/profile/${memberDTO.petImage.split(',')[1] }" />
+								<br />
+							</c:if> <c:if test="${memberDTO.petImage.split(',')[1] == null }">
+								<img width="100" height="100" src="images/profile.png" />
+							</c:if> <c:if test="${memberDTO.petImage.split(',')[2] != null }">
+								<img width="100" height="100"
+									src="member/profile/${memberDTO.petImage.split(',')[2] }" />
+								<br />
+							</c:if> <c:if test="${memberDTO.petImage.split(',')[2] == null }">
+								<img width="100" height="100" src="images/profile.png" />
+							</c:if></td>
+					</tr>
+					<tr>
 						<td><strong>${memberDTO.petName }</strong> , <strong><c:choose>
 									<c:when test="${memberDTO.petAge == '0.1' }">1~6 개월</c:when>
 									<c:when test="${memberDTO.petAge == '0.2' }">7~12 개월</c:when>
 									<c:otherwise>${memberDTO.petAge }살</c:otherwise>
-								</c:choose>
-						</strong></td>
+								</c:choose> </strong></td>
 					</tr>
 					<tr>
-						<td>성별 : <c:if test="${memberDTO.petGender == 'M' }"><strong>수컷</strong></c:if>
-							<c:if test="${memberDTO.petGender == 'F' }"><strong>암컷</strong></c:if>
+						<td>성별 : <c:if test="${memberDTO.petGender == 'M' }">
+								<strong>수컷</strong>
+							</c:if> <c:if test="${memberDTO.petGender == 'F' }">
+								<strong>암컷</strong>
+							</c:if>
 						</td>
 					</tr>
 					<tr>

@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import service.member.MemberProfilePageService;
 
 @Controller
-public class MemberProfilePageController {
-	
+public class MemberProfileEditController {
 	@Autowired
-	MemberProfilePageService memberProfileService; 
-	@RequestMapping("profilePage")
-	public String myPage(HttpSession httpSession, Model model) {
-		memberProfileService.memberInformation(httpSession, model);
-		return "member/memProfilePage";
+	MemberProfilePageService memberProfilePageService;
+	@RequestMapping("profileEditPage")
+	public String memProfileEditPage(HttpSession httpSession, Model model) {
+		memberProfilePageService.memberInformation(httpSession, model);
+		return "member/memProfileEditPage";
 	}
-	
 }

@@ -70,15 +70,15 @@
 }
 
 .joinPage {
-	padding-top: 100px;
+	padding-top: 50px;
 	background-image: url("images/regist_bg.jpg");
 	background-size: 100% 100%;
 	width: 100%;
-	height: 900px;
+	height: 1100px;
 }
 
 .joinBox {
-	border: 1px solid;
+	border: 5px solid;
 	border-collapse: collapse;
 	margin: auto;
 	background-color: #fff;
@@ -96,15 +96,26 @@
 #submit {
 	display: block;
 	margin-top: 10px;
-}
-
-input {
+	margin-left: 10px;
 	margin-bottom: 10px;
 }
 
+#me {
+	padding: 5px;
+	padding-left: 15px;
+	font-size: 120%;
+	text-align: center;
+	background-color: #000;
+	color: #fff;
+}
+#notice {
+	font-size: 80%;
+}
 td {
 	padding-left: 15px;
 	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 }
 </style>
 </head>
@@ -115,6 +126,10 @@ td {
 			<table class="joinBox">
 				<tr>
 					<td id="textBox" colspan="2"><strong id="textJoin">Regist</strong></td>
+				</tr>
+				<tr>
+					<td id="me"><strong>나</strong></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td><strong>아이디(필수)</strong></td>
@@ -171,6 +186,10 @@ td {
 					<td><input type="file" name="memImage" multiple="multiple" /></td>
 				</tr>
 				<tr>
+					<td></td>
+					<td id="notice">얼굴이 포함된 사진 최대 1장</td>
+				</tr>
+				<tr>
 					<td><strong>내 소개(선택)</strong></td>
 					<td><textarea rows="3" cols="25" name="memIntro"
 							placeholder="간단한 자기소개!"></textarea></td>
@@ -182,7 +201,8 @@ td {
 						value="N" />무</td>
 				</tr>
 				<tr>
-					<td colspan="2">반려동물이 없다면 밑의 내용은 기재하지 않으셔도 됩니다.</td>
+					<td id="me"><strong>댕냥이</strong></td>
+					<td id="notice">반려동물이 없다면 밑의 내용은<br />기재하지 않으셔도 됩니다.</td>
 				</tr>
 				<tr>
 					<td><strong>댕 AND 냥(선택)</strong></td>
@@ -225,8 +245,12 @@ td {
 						type="radio" name="petGender" value="F" />암컷</td>
 				</tr>
 				<tr>
-					<td>대냥이 사진(선택)</td>
+					<td><strong>대냥이 사진(선택)</strong></td>
 					<td><input type="file" name="petImage" multiple="multiple" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td id="notice">사진 최대 3장(ctrl 키로 다중선택)</td>
 				</tr>
 				<tr>
 					<td><strong>댕냥이 소개(선택)</strong></td>
